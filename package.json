@@ -1,0 +1,76 @@
+{
+  "name": "Whatsrion",
+  "version": "1.0.0",
+  "description": "Whatsrion Application made by azurion",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "start:old": "electron whatsapp.js",
+    "build": "electron-builder",
+    "build:dir": "electron-builder --dir",
+    "build:installer": "electron-builder --win nsis",
+    "build:portable": "electron-builder --win portable",
+    "build:zip": "electron-builder --win zip",
+    "build:all": "electron-builder --win nsis portable zip"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "package": "^1.0.1"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "com.whatsrion.electron.azurion",
+    "productName": "Whatsrion for Electron",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "src/**/*",
+      "app.ico",
+      "app.png",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "app.ico",
+        "to": "app.ico"
+      },
+      {
+        "from": "app.png",
+        "to": "app.png"
+      }
+    ],
+    "win": {
+      "icon": "app.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Whatsrion for Electron",
+      "installerIcon": "app.ico",
+      "uninstallerIcon": "app.ico"
+    }
+  }
+}
